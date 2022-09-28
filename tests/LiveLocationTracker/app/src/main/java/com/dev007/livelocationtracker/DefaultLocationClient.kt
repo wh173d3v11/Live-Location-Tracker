@@ -20,8 +20,7 @@ class DefaultLocationClient(
 ) : LocationClient {
 
 
-    @SuppressLint("MissingPermission")
-/*already added via extension function*/
+    @SuppressLint("MissingPermission") //already added permission via extension function
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getLocationUpdates(interval: Long): Flow<Location> {
         return callbackFlow { //we can use this, when we need a callback function or response coming.
@@ -60,7 +59,7 @@ class DefaultLocationClient(
                 Looper.getMainLooper()
             )
 
-            awaitClose{ //this will block the flow until it's scope closed.
+            awaitClose { //this will block the flow until it's scope closed.
                 client.removeLocationUpdates(locationCallback)
             }
         }

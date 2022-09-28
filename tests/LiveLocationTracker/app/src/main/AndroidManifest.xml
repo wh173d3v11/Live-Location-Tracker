@@ -4,10 +4,11 @@
     package="com.dev007.livelocationtracker">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/><!--Fetching User Rough Location-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/><!--Fetching User some Exact Location-->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/><!--For Our Service-->
-    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/><!--Need for get the location in foreground and n GOOGLE PLAY we have to give proper reason otherwise they won't allow this permision app.-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!--Fetching User Rough Location-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /><!--Fetching User some Exact Location-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /><!--For Our Service-->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /><!--Need for get the location in foreground and n GOOGLE PLAY we have to give proper reason otherwise they won't allow this permision app.-->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,6 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveLocationTracker"
         tools:targetApi="31">
+
+        <service
+            android:name=".LocationService"
+            android:foregroundServiceType="location" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
