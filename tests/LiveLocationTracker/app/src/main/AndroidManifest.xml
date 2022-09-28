@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /><!--Need for get the location in foreground and n GOOGLE PLAY we have to give proper reason otherwise they won't allow this permision app.-->
 
     <application
+        android:name=".LocationApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -25,6 +26,7 @@
             android:foregroundServiceType="location" />
 
         <activity
+
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

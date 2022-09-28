@@ -12,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 
@@ -24,7 +25,7 @@ class LocationService : Service() {
     private lateinit var locationClient: LocationClient
 
     override fun onBind(p0: Intent?): IBinder? {
-        TODO("Not yet implemented")
+        return null
     }
 
     override fun onCreate() {
@@ -65,6 +66,7 @@ class LocationService : Service() {
                 )
                 notificationManager.notify(NOTIFICATION_ID, updatedNotification.build())
             }
+            .launchIn(serviceScope)
         startForeground(NOTIFICATION_ID, notification.build())
     }
 
