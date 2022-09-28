@@ -1,10 +1,14 @@
 package com.dev007.livelocationtracker
 
+import android.app.Notification
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.CoroutineScope
@@ -30,6 +34,7 @@ class LocationService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        isMyServiceRunning = true
         locationClient = DefaultLocationClient(
             applicationContext,
             LocationServices.getFusedLocationProviderClient(applicationContext)
@@ -49,6 +54,8 @@ class LocationService : Service() {
             .setContentTitle("Tracking Location...")
             .setContentText("Location null")
             .setSmallIcon(R.drawable.ic_launcher_background)
+            .setDefaults(Notification.DEFAULT_ALL)//Set ringtone and vibrations - you can use
+            .setPriority(NotificationCompat.PRIORITY_MAX)/*Heads-up Notifications - Will work after the re-install working for me! :(*/
             .setOngoing(true)/* can't swipe it away */
 
         val notificationManager =
@@ -77,6 +84,7 @@ class LocationService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
+        isMyServiceRunning = false
         serviceScope.cancel()
     }
 
@@ -84,5 +92,6 @@ class LocationService : Service() {
         const val NOTIFICATION_ID = 1
         const val ACTION_START = "ACTION_START"
         const val ACTION_STOP = "ACTION_STOP"
+        var isMyServiceRunning by mutableStateOf(false)
     }
 }
