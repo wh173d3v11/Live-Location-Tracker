@@ -15,3 +15,9 @@ some useful Info :👨‍💻
 * SupervisorJob (in LocationService.kt) - if one job in this scope fails, it will make sure others to keep running.
 * Flow callbackFlow Function - <p> <a href="https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/callback-flow.html"> Check here for better understanding. </a> </p>
 * Check Comments and Commits for Better Understanding 😜
+
+
+
+
+https://user-images.githubusercontent.com/46423041/192869378-a2c11b46-c7d0-4a9c-a724-92178f842219.mp4
+
