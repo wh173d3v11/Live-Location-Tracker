@@ -23,7 +23,7 @@ class DefaultLocationClient(
     @SuppressLint("MissingPermission") //already added permission via extension function
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun getLocationUpdates(interval: Long): Flow<Location> {
-        return callbackFlow { //we can use this, when we need a callback function or response coming.
+        return callbackFlow { //we can use this, when we need a callback function or response coming frequently.
             //here in this case our Client FusedLocationProviderClient will give callback response frequently whenever something triggered.
             if (!context.hasLocationPermission()) {
                 throw LocationClient.LocationException("Missing Location Permission.")
